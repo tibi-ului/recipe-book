@@ -20,7 +20,7 @@ export class RecipeService {
     ),
     new Recipe(
       'Another Test Recipe',
-      'This is a simply a test',
+      'This is a another simply a test',
       'https://assets.epicurious.com/photos/62f16ed5fe4be95d5a460eed/4:6/w_3087,h_4631,c_limit/RoastChicken_RECIPE_080420_37993.jpg',
       [
         new Ingredient('Buns', 2),
@@ -32,6 +32,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
