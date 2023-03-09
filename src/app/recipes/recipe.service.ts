@@ -12,27 +12,34 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
   
-  private recipes: Recipe[] = [
-    new Recipe(
-      'A Test Recipe',
-      'This is a simply a test',
-      'https://assets.epicurious.com/photos/62f16ed5fe4be95d5a460eed/4:6/w_3087,h_4631,c_limit/RoastChicken_RECIPE_080420_37993.jpg',
-      [
-        new Ingredient('Meat', 1),
-        new Ingredient('Frenh Fries', 20)
-      ]
-    ),
-    new Recipe(
-      'Another Test Recipe',
-      'This is a another simply a test',
-      'https://assets.epicurious.com/photos/62f16ed5fe4be95d5a460eed/4:6/w_3087,h_4631,c_limit/RoastChicken_RECIPE_080420_37993.jpg',
-      [
-        new Ingredient('Buns', 2),
-        new Ingredient('Meat', 1)
-      ]
-    ),
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'A Test Recipe',
+  //     'This is a simply a test',
+  //     'https://assets.epicurious.com/photos/62f16ed5fe4be95d5a460eed/4:6/w_3087,h_4631,c_limit/RoastChicken_RECIPE_080420_37993.jpg',
+  //     [
+  //       new Ingredient('Meat', 1),
+  //       new Ingredient('Frenh Fries', 20)
+  //     ]
+  //   ),
+  //   new Recipe(
+  //     'Another Test Recipe',
+  //     'This is a another simply a test',
+  //     'https://assets.epicurious.com/photos/62f16ed5fe4be95d5a460eed/4:6/w_3087,h_4631,c_limit/RoastChicken_RECIPE_080420_37993.jpg',
+  //     [
+  //       new Ingredient('Buns', 2),
+  //       new Ingredient('Meat', 1)
+  //     ]
+  //   ),
+  // ];
+
+  private recipes: Recipe[] = [];
   constructor(private shoppingListService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
