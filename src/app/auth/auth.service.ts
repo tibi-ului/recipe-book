@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 import { User } from './user.model';
 
@@ -27,8 +28,8 @@ export class AuthService {
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        // 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAPl4n0kPAE06IhOegxGTSPrAsarZNfC2c',
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAPl4n0kPAE06IhOegxGTSPrAsarZNfC2c',
+        // 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAPl4n0kPAE06IhOegxGTSPrAsarZNfC2c',
+        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' + environment.firebaseAPIKey,
 
         {
           email: email,
@@ -52,8 +53,8 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        // 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAPl4n0kPAE06IhOegxGTSPrAsarZNfC2c',
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAPl4n0kPAE06IhOegxGTSPrAsarZNfC2c',
+        // 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAPl4n0kPAE06IhOegxGTSPrAsarZNfC2c',
+        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' + environment.firebaseAPIKey,
         {
           email: email,
           password: password,
