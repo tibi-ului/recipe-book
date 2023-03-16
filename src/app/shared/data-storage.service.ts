@@ -32,8 +32,8 @@ export class DataStorageService {
         // 'https://recipe-book-8870a-default-rtdb.firebaseio.com/recipes.json'
         'https://recipe-book-tutorial-15725-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
       ).pipe(   
-      map((recepies) => {
-        return recepies.map((recipe) => {
+      map((recipes) => {
+        return recipes.map((recipe) => {
           return {
             ...recipe,
             ingredients: recipe.ingredients ? recipe.ingredients : [],
